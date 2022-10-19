@@ -11,13 +11,14 @@ Player player;
 int main()
 {
 	::srand(static_cast<unsigned>(time(nullptr))); // time을 이용한 랜덤시드설정
-	board.init(25, &player);
-	player.init(&board);
+	board.Init(25, &player);
+	player.Init(&board);
 
 	uint64 lastTick = 0;
 	while (true)
 	{
-#pragma region 프레임 관리
+		
+#pragma region 프레임관리
 		const uint64 currentTick = ::GetTickCount64();
 		const uint64 deltaTick = currentTick - lastTick; //경과시간
 		lastTick = currentTick;

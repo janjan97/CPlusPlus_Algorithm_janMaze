@@ -21,7 +21,7 @@ public:
 	Board();
 	~Board();
 
-	void			init(int32 size,Player* player);
+	void			Init(int32 size,Player* player);
 	void			Render();
 
 	void			GenerateMap();

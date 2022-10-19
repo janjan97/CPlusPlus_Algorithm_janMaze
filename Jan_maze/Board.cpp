@@ -1,9 +1,9 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Board.h"
 #include "ConsoleHelper.h"
 #include "Player.h"
 
-const char* TILE = "°·";
+const char* TILE = "‚ñ†";
 
 Board::Board()
 {
@@ -13,7 +13,7 @@ Board::~Board()
 {
 }
 
-void Board::init(int32 size, Player* player)
+void Board::Init(int32 size, Player* player)
 {
 	_size = size;
 	_player = player;
@@ -24,15 +24,15 @@ void Board::init(int32 size, Player* player)
 void Board::Render()
 {
 	ConsoleHelper::SetCursorPosition(0, 0);
-	ConsoleHelper::ShowConsoleCursor(false); //ƒøº≠ ±Ùπ⁄¿”
+	ConsoleHelper::ShowConsoleCursor(false); //Ïª§ÏÑú ÍπúÎ∞ïÏûÑ
 	
 
 	for (int32 y = 0; y < 25; y++)
 	{
 		for (int32 x = 0; x < 25; x++)
 		{
-			ConsoleColor color = GetTileColor(Pos{ y,x }); //ªˆªÛ√ﬂ√‚
-			ConsoleHelper::SetCursorColor(color); //ø¯«œ¥¬ªˆ¿∏∑Œ ±◊∏Æ±‚
+			ConsoleColor color = GetTileColor(Pos{ y,x }); //ÏÉâÏÉÅÏ∂îÏ∂ú
+			ConsoleHelper::SetCursorColor(color); //ÏõêÌïòÎäîÏÉâÏúºÎ°ú Í∑∏Î¶¨Í∏∞
 
 			cout << TILE;
 		}
@@ -41,7 +41,7 @@ void Board::Render()
 
 }
 
-// Binary Tree πÃ∑Œ ª˝º∫ æÀ∞Ì∏Æ¡Ú
+// Binary Tree ÎØ∏Î°ú ÏÉùÏÑ± ÏïåÍ≥†Î¶¨Ï¶ò
 // - Mazes For Programmers
 void Board::GenerateMap()
 {
@@ -49,7 +49,7 @@ void Board::GenerateMap()
 	{
 		for (int32 x = 0; x < _size; x++)
 		{
-			//if (x == 0 || x == _size - 1 || y == 0 || y == _size - 1) //ø‹∞˚¿ª ¿¸∫Œ ∫Æ¿∏∑Œ
+			//if (x == 0 || x == _size - 1 || y == 0 || y == _size - 1) //Ïô∏Í≥ΩÏùÑ Ï†ÑÎ∂Ä Î≤ΩÏúºÎ°ú
 			if( x % 2 == 0 || y % 2 == 0)
 				_tile[y][x] = TileType::WALL;
 			else
@@ -57,35 +57,35 @@ void Board::GenerateMap()
 		}
 	}
 	
-	//∑£¥˝¿∏∑Œ øÏ√¯ »§¿∫ æ∆∑°∑Œ ±Ê¿ª ∂’¥¬ ¿€æ˜
+	//ÎûúÎç§ÏúºÎ°ú Ïö∞Ï∏° ÌòπÏùÄ ÏïÑÎûòÎ°ú Í∏∏ÏùÑ Îö´Îäî ÏûëÏóÖ
 	for (int32 y = 0; y < _size; y++)
 	{
 		for (int32 x = 0; x < _size; x++)
 		{
 			if (x % 2 == 0 || y % 2 == 0)
 				continue;
-			if (y == _size - 2 && x == _size - 2) //≥°¿ª ∏∑æ∆¡‹
+			if (y == _size - 2 && x == _size - 2) //ÎÅùÏùÑ ÎßâÏïÑÏ§å
 				continue;
 
 			if (y == _size - 2)
 			{
-				_tile[y][x + 1] = TileType::EMPTY; //x ∂’±‚(ø‹∞˚)
+				_tile[y][x + 1] = TileType::EMPTY; //x Îö´Í∏∞(Ïô∏Í≥Ω)
 				continue;
 			}
 			if (x == _size - 2)
 			{
-				_tile[y + 1][x] = TileType::EMPTY; //y ∂’±‚ (ø‹∞˚)
+				_tile[y + 1][x] = TileType::EMPTY; //y Îö´Í∏∞ (Ïô∏Í≥Ω)
 				continue;
 			}
 
 			const int32 randValue = ::rand() % 2; //0 or 1
 			if (randValue == 0)
 			{
-				_tile[y][x + 1] = TileType::EMPTY; //x ∂’±‚
+				_tile[y][x + 1] = TileType::EMPTY; //x Îö´Í∏∞
 			}
 			else
 			{
-				_tile[y + 1][x] = TileType::EMPTY; //y ∂’±‚
+				_tile[y + 1][x] = TileType::EMPTY; //y Îö´Í∏∞
 			}
 
 		}
@@ -104,10 +104,10 @@ TileType Board::GetTileType(Pos pos)
 
 ConsoleColor Board::GetTileColor(Pos pos)
 {
-	if (_player && _player->GetPos() == pos) //«√∑π¿ÃæÓ
+	if (_player && _player->GetPos() == pos) //ÌîåÎ†àÏù¥Ïñ¥
 		return ConsoleColor::YELLOW;
 	
-	if (GetExitPos() == pos) //√‚±∏
+	if (GetExitPos() == pos) //Ï∂úÍµ¨
 		return ConsoleColor::BLUE;
 
 	TileType tileType = GetTileType(pos);

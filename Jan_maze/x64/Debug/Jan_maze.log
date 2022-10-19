@@ -1,4 +1,7 @@
 ﻿  Board.cpp
   ConsoleHelper.cpp
-  Generating Code...
+  Jan_maze.cpp
+  Player.cpp
+  pch.cpp
+  코드를 생성하고 있습니다...
   Jan_maze.vcxproj -> C:\Users\user\source\repos\Jan_Algorithm\Jan_Algorithm_Study\Jan_Algorithm\x64\Debug\Jan_maze.exe
