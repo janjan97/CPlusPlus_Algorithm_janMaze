@@ -1,5 +1,8 @@
-# CPlusPlus_Algorithm_janMaze
-Cplusplus, Maze Algorithm (right-hand rule) Study
+# 미로 알고리즘 (오른손의 법칙)
+Maze Algorithm (right-hand rule) Study
++ Language : C++ 
++ Tools : Visual Studio
+
 
 ![maze_right_hand](https://user-images.githubusercontent.com/66328790/196883001-d13c25ea-8a71-484f-a517-ded30dc58643.gif)
 
